@@ -12,6 +12,13 @@ class MyHomePage extends StatefulWidget {
 }
 
 class MyHomePageState extends State<MyHomePage> {
+  @override
+  void initState() {
+    super.initState();
+    // aggiorna lo state leggendo dal file json in apertura
+    context.read<CubitTodo>().loadListFromJson();
+  }
+
   Future<void> dialogToAddTodo() async {
     await showDialog(context: context, builder: (context) => const DialogAddTodo());
   }
@@ -29,7 +36,10 @@ class MyHomePageState extends State<MyHomePage> {
               itemBuilder: (context, index) {
                 return Padding(
                   padding: const EdgeInsets.all(10),
-                  child: GestureDetector(onTap: () => context.read<CubitTodo>().deleteTodo(index), child: Text(state[index].content)),
+                  child: GestureDetector(
+                    onTap: () => context.read<CubitTodo>().deleteTodo(index),
+                    child: Text(state[index].content),
+                  ),
                 );
               });
         },

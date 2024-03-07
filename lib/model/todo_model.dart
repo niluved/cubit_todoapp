@@ -1,24 +1,18 @@
 class Todo {
   final String content;
-  final DateTime? dueDate;
-  Todo({required this.content, this.dueDate});
+
+  Todo({required this.content});
 
   factory Todo.fromJson(Map<String, dynamic> json) {
-    return Todo(
-      content: json['content'] as String,
-      dueDate: DateTime.parse(json['dueDate'] ?? ''),
-    );
+    return Todo(content: json['content'] as String);
   }
 
   Map<String, dynamic> toJson() {
-    return {
-      'content': content,
-      'dueDate': dueDate?.toIso8601String(),
-    };
+    return {'content': content};
   }
 
   @override
   String toString() {
-    return 'Todo{content: $content, dueDate: ${dueDate?.toString()}}';
+    return 'Todo{content: $content}';
   }
 }
