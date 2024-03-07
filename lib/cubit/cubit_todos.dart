@@ -1,4 +1,4 @@
-import 'package:cubit_todoapp/todo_model.dart';
+import 'package:cubit_todoapp/model/todo_model.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
 
@@ -19,8 +19,7 @@ class CubitTodo extends Cubit<List<Todo>> {
 
   @override
   String toString() {
-    final List<String> contentList =
-        state.map((item) => item.toString()).toList();
+    final List<String> contentList = state.map((item) => item.toString()).toList();
     return contentList.toString();
   }
 

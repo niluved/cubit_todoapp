@@ -1,5 +1,5 @@
-import 'package:cubit_todoapp/cubit_todos.dart';
-import 'package:cubit_todoapp/todo_model.dart';
+import 'package:cubit_todoapp/cubit/cubit_todos.dart';
+import 'package:cubit_todoapp/model/todo_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

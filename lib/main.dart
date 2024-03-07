@@ -1,7 +1,7 @@
-import 'package:cubit_todoapp/cubit_todos.dart';
+import 'package:cubit_todoapp/cubit/cubit_todos.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'homepage.dart';
+import 'ui/pages/homepage.dart';
 
 void main() => runApp(const MyApp());
 

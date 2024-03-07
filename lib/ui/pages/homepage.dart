@@ -1,6 +1,6 @@
-import 'package:cubit_todoapp/todo_model.dart';
-import 'add_todo_dialog.dart';
-import 'package:cubit_todoapp/cubit_todos.dart';
+import 'package:cubit_todoapp/model/todo_model.dart';
+import '../widgets/add_todo_dialog.dart';
+import 'package:cubit_todoapp/cubit/cubit_todos.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -13,8 +13,7 @@ class MyHomePage extends StatefulWidget {
 
 class MyHomePageState extends State<MyHomePage> {
   Future<void> dialogToAddTodo() async {
-    await showDialog(
-        context: context, builder: (context) => const DialogAddTodo());
+    await showDialog(context: context, builder: (context) => const DialogAddTodo());
   }
 
   @override
@@ -30,9 +29,7 @@ class MyHomePageState extends State<MyHomePage> {
               itemBuilder: (context, index) {
                 return Padding(
                   padding: const EdgeInsets.all(10),
-                  child: GestureDetector(
-                      onTap: () => context.read<CubitTodo>().deleteTodo(index),
-                      child: Text(state[index].content)),
+                  child: GestureDetector(onTap: () => context.read<CubitTodo>().deleteTodo(index), child: Text(state[index].content)),
                 );
               });
         },
