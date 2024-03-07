@@ -12,17 +12,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class MyHomePageState extends State<MyHomePage> {
-  Future<void> _updateStateFromJson() async {
-    await context.read<CubitTodo>().loadListFromJson();
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    // aggiorna lo state leggendo dal file json in apertura
-    _updateStateFromJson();
-  }
-
   Future<void> dialogToAddTodo() async {
     await showDialog(context: context, builder: (context) => const DialogAddTodo());
   }
