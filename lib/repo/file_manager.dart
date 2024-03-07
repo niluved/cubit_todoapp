@@ -33,7 +33,7 @@ class FileManager {
   }
 
   // metodo per leggere la lista di oggetti dal file json e ritornare la lista
-  Future<List<dynamic>?> readJsonFile() async {
+  static Future<List<dynamic>?> readJsonFile() async {
     try {
       File file = await FileManager.jsonFileExternal;
       if (file.existsSync()) {
