@@ -16,6 +16,7 @@ class MyHomePageState extends State<MyHomePage> {
     await showDialog(context: context, builder: (context) => const DialogAddTodo());
   }
 
+  // mi assicuro di aspettare che il cubit sia caricato prima di ritornare la todo list
   Future<void> _updateStateFromJson() async {
     await context.read<CubitTodo>().loadListFromJson();
   }
