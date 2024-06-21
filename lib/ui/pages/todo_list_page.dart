@@ -14,6 +14,7 @@ class TodoListPage extends StatefulWidget {
 }
 
 class _TodoListPageState extends State<TodoListPage> {
+  /*
   late CubitTodo cubitTodo;
 
   @override
@@ -21,11 +22,12 @@ class _TodoListPageState extends State<TodoListPage> {
     super.initState();
     cubitTodo = context.read<CubitTodo>(); // _loadFromJson will be called here (verificato togliendo il blocbuilder sotto)
   }
+  */
 
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<CubitTodo, List<Todo>>(
-      bloc: cubitTodo,
+      // bloc: cubitTodo,
       builder: (context, state) {
         return ListView.builder(
             itemCount: state.length,

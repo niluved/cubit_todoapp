@@ -1,3 +1,6 @@
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../cubit/cubit_todos.dart';
 import '../widgets/add_todo_dialog.dart';
 import 'package:flutter/material.dart';
 import 'todo_list_page.dart';
@@ -16,9 +19,7 @@ class MyHomePageState extends State<MyHomePage> {
 
   // mi assicuro di aspettare che il cubit sia caricato prima di ritornare la todo list
   Future<void> _updateStateFromJson() async {
-    // await context.read<CubitTodo>().loadListFromJson();
-    await Future.delayed(const Duration(seconds: 1));
-    debugPrint('ciao mondo');
+    await context.read<CubitTodo>().loadListFromJson();
   }
 
   @override
@@ -27,7 +28,17 @@ class MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: const Text('Flutter Demo Click Counter'),
       ),
-      body: const TodoListPage(),
+      body: FutureBuilder<void>(
+          future: _updateStateFromJson(),
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return const Center(child: CircularProgressIndicator());
+            }
+            if (snapshot.hasError) {
+              return const Center(child: Text('Error loading list'));
+            }
+            return const TodoListPage();
+          }),
       floatingActionButton: FloatingActionButton(
         onPressed: dialogToAddTodo,
         child: const Icon(Icons.add),
