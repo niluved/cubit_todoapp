@@ -1,7 +1,5 @@
 import '../widgets/add_todo_dialog.dart';
-import 'package:cubit_todoapp/cubit/cubit_todos.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'todo_list_page.dart';
 
 class MyHomePage extends StatefulWidget {
