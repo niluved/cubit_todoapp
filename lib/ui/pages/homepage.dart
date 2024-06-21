@@ -16,9 +16,13 @@ class MyHomePageState extends State<MyHomePage> {
     await showDialog(context: context, builder: (context) => const DialogAddTodo());
   }
 
+  /*
   Future<void> _updateStateFromJson() async {
-    await context.read<CubitTodo>().loadListFromJson();
+    // await context.read<CubitTodo>().loadListFromJson();
+    await Future.delayed(const Duration(seconds: 1));
+    debugPrint('ciao mondo');
   }
+  */
 
   @override
   Widget build(BuildContext context) {
@@ -26,17 +30,7 @@ class MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: const Text('Flutter Demo Click Counter'),
       ),
-      body: FutureBuilder<void>(
-          future: _updateStateFromJson(),
-          builder: (context, snapshot) {
-            if (snapshot.connectionState == ConnectionState.waiting) {
-              return const Center(child: CircularProgressIndicator());
-            }
-            if (snapshot.hasError) {
-              return const Center(child: Text('Error loading list'));
-            }
-            return const TodoListPage();
-          }),
+      body: const TodoListPage(),
       floatingActionButton: FloatingActionButton(
         onPressed: dialogToAddTodo,
         child: const Icon(Icons.add),

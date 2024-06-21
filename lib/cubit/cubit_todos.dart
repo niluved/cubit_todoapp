@@ -5,10 +5,12 @@ import 'package:flutter/material.dart';
 import '../repo/file_manager.dart';
 
 class CubitTodo extends Cubit<List<Todo>> {
-  CubitTodo() : super([]);
+  CubitTodo() : super([]) {
+    _loadListFromJson();
+  }
 
   // funzione per leggere la lista dei Todo dal file json e aggiornare lo state
-  Future<void> loadListFromJson() async {
+  Future<void> _loadListFromJson() async {
     try {
       // legge la lista dal file JSON
       List<dynamic>? jsonList = await FileManager.readJsonFile();
